@@ -3,7 +3,7 @@ package personal.project;
 import java.util.Random;
 import java.util.Scanner;
 
-public class baseball05 {
+public class baseball_kwh {
 
 	public static void main(String[] args) {
 		
