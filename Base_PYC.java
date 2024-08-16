@@ -9,7 +9,7 @@ public class Base_PYC {
 		
 		while(true) {
 			// play 클래스 생성
-			Ddd play = new Ddd();
+			Ddd_PYC play = new Ddd_PYC();
 			while(true) {
 				System.out.println("숫자를 맞추세요.");
 				// input 입력
