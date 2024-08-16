@@ -11,73 +11,81 @@ public class bsg {
 
         int com1, com2, com3;
         int user1, user2, user3;
-        int gamecnt;
-        int strikecnt;
-        int ballcnt;
+        int gameCnt;
+        int strikeCnt;
+        int ballCnt;
 
         while (true) {
             // 3개의 난수를 중복되지 않도록 생성
-            com1 = random.nextInt(9) + 1; // random클래스의 nextInt(9)은 0~8까지의 난수를 생성하므로 + 1
+            com1 = random.nextInt(9) + 1; 
             com2 = random.nextInt(9) + 1;
             com3 = random.nextInt(9) + 1;
 
             while (com1 == com2 || com2 == com3 || com3 == com1) {
-                com2 = random.nextInt(9) + 1; // 중복 시 재생성
+                com2 = random.nextInt(9) + 1; 
                 com3 = random.nextInt(9) + 1;
             }
 
-            strikecnt = 0; // 스트라이크 카운트 초기화
-            gamecnt = 0; // 게임 카운트 초기화
+            strikeCnt = 0; 
+            gameCnt = 0; 
 
             while (true) {
                 System.out.println("3개의 정수를 입력하세요(1~9)");
-                System.out.println("스페이스로 구분하시고 마지막에 Enter를 눌러주세요");
+                System.out.println("숫자를 하나씩 입력할 때마다 Enter를 눌러주세요");
                 user1 = scanner.nextInt();
                 user2 = scanner.nextInt();
                 user3 = scanner.nextInt();
 
-                // 게임 카운트 1회 증가
-                gamecnt++;
+                gameCnt++;
 
-                strikecnt = 0; // 스트라이크, 볼 카운트 초기화
-                ballcnt = 0;
+                strikeCnt = 0; 
+                ballCnt = 0;
 
-                // 스트라이크 (숫자가 같고, 위치도 같으면 스트라이크)
-                if (com1 == user1) strikecnt++;
-                if (com2 == user2) strikecnt++;
-                if (com3 == user3) strikecnt++;
+                if (com1 == user1) strikeCnt++;
+                if (com2 == user2) strikeCnt++;
+                if (com3 == user3) strikeCnt++;
 
-                // 볼 (숫자는 같지만 위치가 다르면 볼)
-                if (com1 == user2 || com1 == user3) ballcnt++;
-                if (com2 == user1 || com2 == user3) ballcnt++;
-                if (com3 == user1 || com3 == user2) ballcnt++;
+                if (com1 == user2 || com1 == user3) ballCnt++;
+                if (com2 == user1 || com2 == user3) ballCnt++;
+                if (com3 == user1 || com3 == user2) ballCnt++;
 
-                // 스트라이크 카운트가 3개가 되면 게임 종료
-                if (strikecnt == 3) {
+                if (strikeCnt == 3) {
                     System.out.println("3스트라이크! 게임 종료");
-                    System.out.println(gamecnt + "회를 시도하셨습니다.");
+                    System.out.println(gameCnt + "회를 시도하셨습니다.");
                     break;
                 } else {
-                    // 하나도 못 맞추는 경우
-                    if (strikecnt == 0 && ballcnt == 0) {
+                    if (strikeCnt == 0 && ballCnt == 0) {
                         System.out.println("아웃입니다");
                     } else {
-                        System.out.println(strikecnt + " 스트라이크, " + ballcnt + " 볼");
+                        System.out.println(strikeCnt + "스트라이크, " + ballCnt + "볼");
                     }
                 }
             }
 
-            System.out.println("한 게임 더 하시겠습니까?(0: 종료, 1: 재시작)");
-            int restart = scanner.nextInt();
+            // 게임 재시작 여부를 숫자로만 입력받는 코드 추가
+            int restart;
+            while (true) {
+                System.out.println("한 게임 더 하시겠습니까?(0: 종료, 1: 재시작)");
+                String input = scanner.next();
+
+                try {
+                    restart = Integer.parseInt(input);
+                    if (restart == 0 || restart == 1) {
+                        break; 
+                    } else {
+                        System.out.println("0 또는 1을 입력하세요.");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("유효하지 않은 입력입니다. 숫자만 입력하세요.");
+                }
+            }
+
             if (restart == 0) {
-                // 게임 종료
                 System.out.println("게임이 종료되었습니다.");
                 break;
             } else if (restart == 1) {
-                // 게임 재시작(변수 초기화는 이미 위에서 했으므로 추가할 필요 없음)
                 System.out.println("게임을 다시 시작합니다.");
             }
         }
     }
 }
-
