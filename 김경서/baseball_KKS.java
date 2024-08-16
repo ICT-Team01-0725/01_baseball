@@ -3,7 +3,7 @@ package team01;
 import java.util.Random;		// 컴퓨터가 랜덤으로 숫자 생성하도록 Random 이용  
 import java.util.Scanner;		// 사용자가 입력한 숫자를 입력받도록 Scanner 이용 
 
-public class baseball01 {
+public class baseball_KKS {
 	public static void main(String[] args) {
 		
 		Scanner scanner = new Scanner(System.in);
