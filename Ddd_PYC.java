@@ -1,6 +1,6 @@
 package number_baseball;
 
-public class Ddd {
+public class Ddd_PYC {
 	// 초기값
 	private int[] computer = new int[3];
 	private int strike = 0;
